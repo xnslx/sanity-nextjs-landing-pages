@@ -19,7 +19,10 @@ export default {
       type: 'array',
       title: 'Page sections',
       of: [
-        { type: 'hero' },
+        { type: 'hero'},
+        { type: 'companySection'},
+        { type: 'serviceSection'},
+        { type: 'progressSection'},
         { type: 'imageSection' },
         { type: 'mailchimp' },
         { type: 'textSection' },
@@ -48,3 +51,4 @@ export default {
     },
   },
 };
+

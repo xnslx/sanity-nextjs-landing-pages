@@ -6,6 +6,7 @@ import * as SectionComponents from './sections'
 function resolveSections (section) {
   // eslint-disable-next-line import/namespace
   const Section = SectionComponents[upperFirst(section._type)]
+  console.log('section', section)
 
   if (Section) {
     return Section
@@ -17,6 +18,7 @@ function resolveSections (section) {
 
 function RenderSections (props) {
   const {sections} = props
+  console.log('sessioncomponent', props)
 
   if (!sections) {
     console.error('Missing section')

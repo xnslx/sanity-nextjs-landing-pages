@@ -10,6 +10,7 @@ const builder = imageUrlBuilder(client)
 
 function ImageSection (props) {
   const {heading, label, text, image, cta} = props
+  console.log('imagesetion', props)
 
   if (!image) {
     return null

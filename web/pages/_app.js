@@ -43,6 +43,8 @@ class App extends BaseApp {
 
   render () {
     const {Component, pageProps} = this.props
+    console.log('component', Component)
+    console.log('pageprops', pageProps)
     return (
       <Component {...pageProps} />
     )
