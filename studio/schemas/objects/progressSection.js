@@ -14,21 +14,29 @@ export default {
         },
         {
             name: 'image',
-            type: 'array',
-            title: 'Icon',
-            of: [{ type: 'image' }]
+            type: 'image',
+            title: 'Icon'
         },
         {
             name: 'subheading',
-            type: 'array',
-            title: 'Subheading',
-            of: [{ type: 'string' }],
+            type: 'string',
+            title: 'Sub Heading'
         },
         {
             name: 'sublabel',
-            type: 'array',
-            title: 'Sublabel',
-            of: [{ type: 'string' }],
+            type: 'string',
+            title: 'Sub Label'
+        }
+    ],
+    preview: {
+        select: {
+            heading: 'heading'
         },
-    ]
+        prepare({ heading }) {
+            return {
+                title: `${heading}`,
+                subtitle: 'progress section'
+            }
+        }
+    }
 }
