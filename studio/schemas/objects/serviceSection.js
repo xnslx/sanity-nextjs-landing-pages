@@ -14,34 +14,53 @@ export default {
       title: 'Label'
     },
     {
-      name: 'imagegalleryone',
-      type: 'image',
-      title: 'Image Gallery One'
-    },
-    {
-      name: 'subheadingone',
-      type: 'string',
-      title: 'Subheading One'
-    },
-    {
-      name: 'sublabelone',
-      type: 'string',
-      title: 'Sublabel One'
-    },
-    {
-      name: 'imagegallerytwo',
-      type: 'image',
-      title: 'Image Gallery Two'
-    },
-    {
-      name: 'subheadingtwo',
-      type: 'string',
-      title: 'Subheading Two'
-    },
-    {
-      name: 'sublabeltwo',
-      type: 'string',
-      title: 'Sublabel Two'
+      type: 'array',
+      name: 'services',
+      title: 'Services',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'image',
+              type: 'image',
+              title: 'Image'
+            },
+            {
+              name: 'subheading',
+              type: 'string',
+              title: 'Sub Heading'
+            },
+            {
+              name: 'sublabel',
+              type: 'string',
+              title: 'Sub Label'
+            },
+            {
+              name: 'everyservice',
+              type: 'array',
+              title: 'Every Service',
+              of: [
+                {
+                  type: 'object',
+                  fields: [
+                    {
+                      name: 'everylabel',
+                      type: 'string',
+                      title: 'Every Label'
+                    },
+                    {
+                      name: 'text',
+                      title: 'Text',
+                      type: 'text'
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   preview: {
