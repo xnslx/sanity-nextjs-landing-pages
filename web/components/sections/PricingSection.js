@@ -1,13 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import client from '../../client'
-import imageUrlBuilder from '@sanity/image-url'
-import Cta from '../Cta'
+import React from "react";
+import PropTypes from "prop-types";
+import client from "../../client";
+import imageUrlBuilder from "@sanity/image-url";
+import Cta from "../Cta";
+import SimpleBlockContent from "../SimpleBlockContent";
+import BlockContent from "@sanity/block-content-to-react";
+import serializers from "../serializers";
 
-const builder = imageUrlBuilder(client)
+const builder = imageUrlBuilder(client);
+const { projectId, dataset } = client.config();
 
 const PricingSection = (props) => {
-  const {chooselabel, ctas, heading, icon, label, price, subheading, text} = props
+  const { heading, label, subheading, pricingchoose } = props;
+
   return (
     <div>
       <div>
@@ -16,30 +21,35 @@ const PricingSection = (props) => {
         <p>{label}</p>
       </div>
       <div>
-        <img src={builder.image(icon.asset._ref).width(48)} />
-        <h5>{chooselabel}</h5>
-        <h2>{price}</h2>
-        <p>{text}</p>
-        <div>
-          {ctas.map((cta) => (
-            <Cta {...cta} key={cta._key} />
-          ))}
-        </div>
+        {pricingchoose.map((pc) => (
+          <>
+            <img src={builder.image(pc.icon.asset._ref).width(48)} />
+            <p>{pc.chooselabel}</p>
+            <h2>{pc.price}</h2>
+            <hr></hr>
+            <BlockContent
+              blocks={pc.text}
+              serializers={serializers}
+              projectId={projectId}
+              dataset={dataset}
+            />
+            <div>
+              {pc.ctas.map((cta) => (
+                <Cta {...cta} key={cta._key} />
+              ))}
+            </div>
+          </>
+        ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
 PricingSection.propTypes = {
-  chooselabel: PropTypes.string,
   heading: PropTypes.string,
-  icon: PropTypes.object,
   label: PropTypes.string,
-  price: PropTypes.string,
   subheading: PropTypes.string,
-  text: PropTypes.string,
-  tagline: PropTypes.array,
-  ctas: PropTypes.arrayOf(PropTypes.object)
-}
+  pricingchoose: PropTypes.array,
+};
 
-export default PricingSection
+export default PricingSection;

@@ -19,33 +19,45 @@ export default {
       type: 'string'
     },
     {
-      name: 'icon',
-      title: 'Icon',
-      type: 'image'
-    },
-    {
-      name: 'chooselabel',
-      title: 'Choose Label',
-      type: 'string'
-    },
-    {
-      name: 'price',
-      title: 'Price',
-      type: 'string'
-    },
-    {
-      name: 'text',
-      title: 'Text',
-      type: 'string'
-    },
-    {
-      name: 'ctas',
       type: 'array',
-      title: 'Call to actions',
+      name: 'pricingchoose',
+      title: 'Pricing Choose',
       of: [
         {
-          title: 'Call to action',
-          type: 'cta'
+          type: 'object',
+          fields: [
+            {
+              name: 'icon',
+              title: 'Icon',
+              type: 'image'
+            },
+            {
+              name: 'chooselabel',
+              title: 'Choose Label',
+              type: 'string'
+            },
+            {
+              name: 'price',
+              title: 'Price',
+              type: 'string'
+            },
+            {
+              name: 'text',
+              title: 'Text',
+              type: 'portableText'
+            },
+            {
+              name: 'ctas',
+              type: 'array',
+              title: 'Call to actions',
+              of: [
+                {
+                  title: 'Call to action',
+                  type: 'cta'
+                }
+              ]
+            }
+          ]
         }
       ]
     }
@@ -54,7 +66,7 @@ export default {
     select: {
       heading: 'heading'
     },
-    prepare ({heading}) {
+    prepare({ heading }) {
       return {
         title: `${heading}`,
         subtitle: 'pricingSection'
